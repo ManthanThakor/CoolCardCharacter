@@ -1,0 +1,94 @@
+body {
+  background-color: #1a1a1a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.char-card-div {
+  height: 500px;
+  width: 200px;
+  position: relative;
+  overflow: hidden;
+  background-color: #fff;
+  clip-path: polygon(0 0, 100% 0, 100% 90%, 50% 100%, 0% 90%);
+}
+
+.card-sec {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: grayscale(100%); /* Default to grayscale */
+  transition: filter 0.5s ease, box-shadow 0.5s ease; /* Smooth transition for grayscale and shadow */
+}
+
+/* Animation keyframes for zoom and move effect */
+@keyframes zoomMoveImage {
+  0% {
+    transform: scale(1) translate(0, 0);
+  }
+  25% {
+    transform: scale(1.1) translate(5px, -5px); /* Zoom in and move top right */
+  }
+  50% {
+    transform: scale(1.1) translate(-5px, -5px); /* Zoom in and move top left */
+  }
+  75% {
+    transform: scale(1.1) translate(-5px, 5px); /* Zoom in and move bottom left */
+  }
+  100% {
+    transform: scale(1.1) translate(5px, 5px); /* Zoom in and move bottom right */
+  }
+}
+
+.card-logo {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 150px;
+  clip-path: polygon(100% 0, 100% 38%, 100% 100%, 0 100%, 0 45%);
+  background-color: #000000;
+  transition: background-color 0.5s ease-in-out; /* Smooth transition for line color */
+}
+
+.line {
+  position: absolute;
+  width: 109%;
+  height: 11px;
+  background-color: #2e2b2b;
+  transform: rotate(-18deg);
+  bottom: 115px;
+  z-index: 1;
+  left: -9px;
+  transition: background-color 0.5s ease-in-out; /* Smooth transition for line color */
+}
+
+.card-logo-img {
+  position: absolute;
+  left: 50%;
+  bottom: 20px;
+  transform: translateX(-50%);
+  height: 100px;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Hover effects */
+.char-card-div:hover .card-sec {
+  filter: grayscale(0%); /* Remove grayscale on hover */
+  animation: zoomMoveImage 4s infinite; /* Apply the zoom and move animation */
+}
+
+.char-card-div:hover .line {
+  background-color: #ab9102; /* Change line color on hover */
+}
+.char-card-div:hover .card-logo {
+  background-color: #d5d2d2; /* Change line color on hover */
+}
